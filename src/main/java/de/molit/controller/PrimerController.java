@@ -17,8 +17,12 @@ public class PrimerController {
 
     private static final Log logger = LogFactory.getLog(PrimerController.class);
 
+    private final PrimerDAO primerDAO;
+
     @Autowired
-    private PrimerDAO primerDAO;
+    public PrimerController(PrimerDAO primerDAO) {
+        this.primerDAO = primerDAO;
+    }
 
     @RequestMapping(value = "/primers", method = RequestMethod.GET)
     public List<Primer> getPrimerList() {
