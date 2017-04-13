@@ -2,24 +2,24 @@ package de.molit.xto;
 
 public class Primer {
 
-    private long id;
+    private String id;
     private String name;
     private String sequence;
 
     public Primer() {
     }
 
-    public Primer(long id, String name, String sequence) {
+    public Primer(String id, String name, String sequence) {
         this.id = id;
         this.name = name;
         this.sequence = sequence;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

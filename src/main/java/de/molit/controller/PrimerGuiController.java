@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PrimerGuiController {
 
+    private final PrimerDAO primerDAO;
+
     @Autowired
-    private PrimerDAO primerDAO;
+    public PrimerGuiController(PrimerDAO primerDAO) {
+        this.primerDAO = primerDAO;
+    }
 
     @RequestMapping("/")
     public String index(Model model){

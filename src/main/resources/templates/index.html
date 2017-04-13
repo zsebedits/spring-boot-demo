@@ -2,23 +2,98 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" crossorigin="anonymous"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+
+    <style>
+        .jumbotron {
+            background: #34495e;
+            color: white;
+        }
+
+        .primer-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 4px 16px;
+            border: 1px solid #c0392b;
+            border-radius: 2px;
+            font-size: large;
+        }
+
+        .primer-btn:hover, .primer-btn:active, .primer-btn:focus {
+            background: #c0392b;
+            color: white;
+            text-decoration: none;
+        }
+
+    </style>
+
 </head>
 <body>
-<h1>Primers:</h1>
-<table>
-    <tr>
-        <th>Count</th>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Sequence</th>
-    </tr>
-    <tr th:each="primer,iterationStatus  : ${primers}">
-        <td th:text="${iterationStatus.count}">1</td>
-        <td th:text="${primer.id}">ID</td>
-        <td th:text="${primer.name}">NAME</td>
-        <td th:text="${primer.sequence}">SEQUENCE</td>
-    </tr>
-</table>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Awesome Primer Management</h1>
+        <p class="lead">Manage your primers with ease.</p>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-6">
+            <h2>Primers</h2>
+        </div>
+
+        <div class="col-6">
+            <div class="text-right">
+                <a class="primer-btn" href="javascript:history.go(0)">Reload</a>
+            </div>
+        </div>
+
+    </div>
+
+    <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Sequence</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="primer,iterationStatus  : ${primers}">
+            <td th:text="${iterationStatus.count}">1</td>
+            <td th:text="${primer.id}">ID</td>
+            <td th:text="${primer.name}">NAME</td>
+            <td th:text="${primer.sequence}">SEQUENCE</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
 </body>
 </html>
