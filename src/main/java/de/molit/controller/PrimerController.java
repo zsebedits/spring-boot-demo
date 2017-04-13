@@ -1,8 +1,10 @@
 package de.molit.controller;
 
+import de.molit.services.PrimerDAO;
 import de.molit.xto.Primer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,18 +17,17 @@ public class PrimerController {
 
     private static final Log logger = LogFactory.getLog(PrimerController.class);
 
-    private List<Primer> primerList = new ArrayList<>();
-    private long sequence = 1;
+    @Autowired
+    private PrimerDAO primerDAO;
 
     @RequestMapping(value = "/primers", method = RequestMethod.GET)
     public List<Primer> getPrimerList() {
-        return primerList;
+        return primerDAO.all();
     }
 
     @RequestMapping(value = "/primers", method = RequestMethod.POST)
     public ResponseEntity<Primer> createPrimer(@RequestBody Primer primer) {
-        primer.setId(sequence++);
-        primerList.add(primer);
+        primer = primerDAO.create(primer);
 
         logger.info("Primer \"" + primer.getName() + "\" successfully created with id: " + primer.getId());
 
@@ -35,10 +36,8 @@ public class PrimerController {
 
     @RequestMapping(value = "/primers/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getPrimerById(@PathVariable("id") long id) {
-        return primerList.stream()
-                .filter(primer -> primer.getId() == id)
+        return primerDAO.findById(id)
                 .map(primer -> new ResponseEntity<>(primer, HttpStatus.OK))
-                .findFirst()
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
