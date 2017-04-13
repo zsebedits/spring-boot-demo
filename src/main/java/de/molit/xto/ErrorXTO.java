@@ -1,7 +1,7 @@
 package de.molit.xto;
 
 /**
- * Created by Daniel Zsebedits on 13.04.2017.
+ * XTO representing an error,
  */
 public class ErrorXTO {
 

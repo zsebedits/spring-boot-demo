@@ -1,4 +1,4 @@
-package de.molit.controller;
+package de.molit.controller.gui;
 
 import de.molit.services.PrimerDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 /**
- * Created by patrickwerner on 13.04.17.
+ * GUI Controller for ThymeLeaf
  */
 @Controller
 public class PrimerGuiController {

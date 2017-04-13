@@ -1,5 +1,8 @@
 package de.molit.xto;
 
+/**
+ * XTO representing a primer
+ */
 public class Primer {
 
     private String id;

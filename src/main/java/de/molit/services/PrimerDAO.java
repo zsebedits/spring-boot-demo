@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Data Access Object (DAO) for primers. UUIDs are used as identifiers and used as Strings, which might not be optimal.
+ * Please do some research before using UUIDs as Strings in the Database.
+ */
 @Repository
 public class PrimerDAO {
 
