@@ -1,11 +1,11 @@
 package de.molit.controller;
 
-import de.molit.xto.Primer;
+import de.molit.services.PrimerDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 
 /**
  * Created by patrickwerner on 13.04.17.
@@ -13,12 +13,12 @@ import java.util.ArrayList;
 @Controller
 public class PrimerGuiController {
 
+    @Autowired
+    private PrimerDAO primerDAO;
+
     @RequestMapping("/")
     public String index(Model model){
-        ArrayList<Primer> primers =new ArrayList<>();
-        Primer primer1 = new Primer(1,"superName", "sequenco");
-        primers.add(primer1);
-        model.addAttribute("primers", primers);
+        model.addAttribute("primers", primerDAO.all());
         return "index";
     }
 }
